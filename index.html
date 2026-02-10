@@ -8,6 +8,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body {
   font-family: 'Times New Roman', Georgia, serif;
+  font-size: 17px;
   color: #222;
   background: #fff;
   max-width: 640px;
@@ -90,15 +91,18 @@ footer {
 <hr>
 
 <h2>Schema</h2>
-<p>Canonical JSON Schema for autonomous agent runtime state records.</p>
-<a class="schema-link" href="/schema/runtime-state/1.0.0/schema.json">pmatrix.io/schema/runtime-state/1.0.0/schema.json</a>
-<p>Schema version: <code>1.0.0</code> · Spec version: <code>pmatrix-3.5</code></p>
+<p>
+Canonical runtime state schema.<br>
+The frozen and authoritative reference is provided via the Reference Encoder release.
+</p>
 
 <hr>
 
 <h2>Reference Encoder</h2>
 <div class="ref-item">
-  <a href="https://github.com/pmatrix-io/encoder">github.com/pmatrix-io/encoder</a>
+  <a href="https://github.com/p-matrix/pmatrix-encoder/releases/tag/v1.0.0" target="_blank">
+    https://github.com/p-matrix/pmatrix-encoder
+  </a>
   <div class="ref-label">Schema conformance tool. Not an execution engine.</div>
 </div>
 
