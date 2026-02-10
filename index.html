@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>P-MATRIX — Runtime State Representation</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Times New Roman', Georgia, serif;
+  color: #222;
+  background: #fff;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 80px 24px 120px;
+  line-height: 1.6;
+}
+h1 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.3em;
+}
+.subtitle {
+  font-size: 0.85rem;
+  color: #888;
+  margin-bottom: 3em;
+}
+hr {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 2.5em 0;
+}
+h2 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1em;
+}
+p {
+  font-size: 0.9rem;
+  color: #444;
+  margin-bottom: 1em;
+}
+a {
+  color: #444;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+a:hover { color: #000; }
+code {
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+  background: #f5f5f5;
+  padding: 0.15em 0.4em;
+  border-radius: 2px;
+}
+.schema-link {
+  display: block;
+  margin: 1em 0;
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+  word-break: break-all;
+}
+.ref-item {
+  margin-bottom: 0.6em;
+  font-size: 0.85rem;
+  color: #555;
+}
+.ref-label {
+  color: #888;
+  font-size: 0.8rem;
+}
+footer {
+  margin-top: 4em;
+  padding-top: 1.5em;
+  border-top: 1px solid #eee;
+  font-size: 0.75rem;
+  color: #aaa;
+}
+</style>
+</head>
+<body>
+
+<h1>P-MATRIX</h1>
+<div class="subtitle">Runtime State Representation — pmatrix-3.5</div>
+
+<hr>
+
+<h2>Schema</h2>
+<p>Canonical JSON Schema for autonomous agent runtime state records.</p>
+<a class="schema-link" href="/schema/runtime-state/1.0.0/schema.json">pmatrix.io/schema/runtime-state/1.0.0/schema.json</a>
+<p>Schema version: <code>1.0.0</code> · Spec version: <code>pmatrix-3.5</code></p>
+
+<hr>
+
+<h2>Reference Encoder</h2>
+<div class="ref-item">
+  <a href="https://github.com/pmatrix-io/encoder">github.com/pmatrix-io/encoder</a>
+  <div class="ref-label">Schema conformance tool. Not an execution engine.</div>
+</div>
+
+<hr>
+
+<footer>
+  <p>© 2026 Dong Hun Lee. All rights reserved.</p>
+  <p>Patent Pending: KR Application No. 10-2025-0216047</p>
+</footer>
+
+</body>
+</html>

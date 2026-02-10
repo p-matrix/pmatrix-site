@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pmatrix.io/schema/runtime-state/1.0.0",
+  "title": "P-MATRIX Runtime State",
+  "description": "Autonomous agent runtime state representation. Captures operational posture at a single point in time.",
+  "type": "object",
+  "required": [
+    "spec_version",
+    "schema_version",
+    "timestamp",
+    "functions",
+    "stability_score",
+    "risk_score",
+    "mode",
+    "risk_level"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "spec_version": {
+      "type": "string",
+      "const": "pmatrix-3.5",
+      "description": "P-MATRIX specification version that governs this state representation."
+    },
+    "schema_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+      "description": "Semantic version of this schema. Current: 1.0.0."
+    },
+    "timestamp": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Unix epoch time in seconds (UTC) at which this state was captured. Sub-second precision is out of scope."
+    },
+    "functions": {
+      "type": "object",
+      "description": "Four evaluation functions that jointly characterize the agent's runtime posture. Each function produces a normalized scalar in [0.0, 1.0].",
+      "required": ["baseline", "norm", "stability", "meta_control"],
+      "additionalProperties": false,
+      "properties": {
+        "baseline": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "description": "Baseline establishment function. Measures adherence to the agent's initial reference profile. Higher values indicate closer alignment with established baseline behavior."
+        },
+        "norm": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "description": "Normative constraint management function. Measures compliance with defined operational boundaries and policy constraints. Higher values indicate stronger boundary adherence."
+        },
+        "stability": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "description": "Adaptive stability assessment function. Measures cumulative trajectory stability over a sliding observation window. Higher values indicate more stable operational trajectory."
+        },
+        "meta_control": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "description": "Recursive meta-control function. Measures the agent's capacity for self-reflective monitoring and corrective feedback. Higher values indicate stronger self-regulatory posture."
+        }
+      }
+    },
+    "stability_score": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "description": "Composite stability assessment derived from the four evaluation functions. Implementation-defined aggregation. Higher values indicate greater overall stability."
+    },
+    "risk_score": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "description": "Composite risk assessment derived from stability_score and implementation-defined runtime signals. Higher values indicate greater risk."
+    },
+    "mode": {
+      "type": "string",
+      "enum": ["Optimal", "Normal", "Caution", "Alert", "Halt"],
+      "description": "Discrete operating mode determined by risk_score thresholds."
+    },
+    "risk_level": {
+      "type": "string",
+      "enum": ["L1", "L2", "L3", "L4", "L5"],
+      "description": "Risk classification level. L1 is lowest risk; L5 is highest."
+    }
+  }
+}
