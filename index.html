@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>P-MATRIX — Runtime State Representation</title>
+<title>P-MATRIX</title>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body {
@@ -66,13 +66,24 @@ code {
   word-break: break-all;
 }
 .ref-item {
-  margin-bottom: 0.6em;
+  margin-bottom: 1.2em;
   font-size: 0.85rem;
   color: #555;
 }
 .ref-label {
   color: #888;
   font-size: 0.8rem;
+}
+.paper-item {
+  margin-bottom: 1.2em;
+}
+.paper-item a {
+  font-size: 0.9rem;
+}
+.paper-item .doi {
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+  color: #888;
 }
 footer {
   margin-top: 4em;
@@ -86,7 +97,25 @@ footer {
 <body>
 
 <h1>P-MATRIX</h1>
-<div class="subtitle">Runtime State Representation — pmatrix-3.5</div>
+<div class="subtitle">Runtime State Representation &amp; Mutual Verification Protocol</div>
+
+<hr>
+
+<h2>Papers</h2>
+
+<div class="paper-item">
+  <a href="https://doi.org/10.5281/zenodo.18682846" target="_blank">
+    P-MATRIX Runtime State Representation: A Portable Coordinate System for Autonomous Agent Operational Posture
+  </a><br>
+  <span class="doi">doi:10.5281/zenodo.18682846</span>
+</div>
+
+<div class="paper-item">
+  <a href="https://doi.org/10.5281/zenodo.18683912" target="_blank">
+    P-MATRIX: A Mutual Verification Protocol for Runtime Governance Across Autonomous Nodes
+  </a><br>
+  <span class="doi">doi:10.5281/zenodo.18683912</span>
+</div>
 
 <hr>
 
@@ -98,19 +127,27 @@ The frozen and authoritative reference is provided via the Reference Encoder rel
 
 <hr>
 
-<h2>Reference Encoder</h2>
+<h2>Reference Encoders</h2>
+
 <div class="ref-item">
   <a href="https://github.com/p-matrix/pmatrix-encoder/releases/tag/v1.0.0" target="_blank">
-    https://github.com/p-matrix/pmatrix-encoder
+    pmatrix-encoder v1.0.0
   </a>
-  <div class="ref-label">Schema conformance tool. Not an execution engine.</div>
+  <div class="ref-label">Runtime state schema conformance. Not an execution engine.</div>
+</div>
+
+<div class="ref-item">
+  <a href="https://github.com/p-matrix/pmatrix-protocol-encoder/releases/tag/v0.1.1" target="_blank">
+    pmatrix-protocol-encoder v0.1.1
+  </a>
+  <div class="ref-label">Mutual verification protocol schema conformance. Not an execution engine.</div>
 </div>
 
 <hr>
 
 <footer>
-  <p>© 2026 Dong Hun Lee. All rights reserved.</p>
-  <p>Patent Pending: KR Application No. 10-2025-0216047</p>
+  <p>&copy; 2026 Dong Hun Lee. All rights reserved.</p>
+  <p>Patent Pending: KR Application No. 10-2025-0216047, 10-2026-0016343</p>
 </footer>
 
 </body>
