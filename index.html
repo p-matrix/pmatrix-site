@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="refresh" content="0; url=https://app.pmatrix.io">
+<script>window.location.replace('https://app.pmatrix.io');</script>
+<title>P-MATRIX — Runtime Governance OS for AI Agents</title>
+<meta name="description" content="Runtime Governance OS for AI Agents. Your agent drifts at runtime. P-MATRIX sees it and stops it.">
+<meta property="og:title" content="P-MATRIX — Runtime Governance OS for AI Agents" />
+<meta property="og:description" content="Your agent drifts at runtime. P-MATRIX sees it and stops it." />
+<meta property="og:image" content="https://p-matrix.io/pmatrix-logo-square-transparent-512.png" />
+<meta property="og:url" content="https://p-matrix.io" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@pmatrix_" />
+<meta name="twitter:title" content="P-MATRIX — Runtime Governance OS for AI Agents" />
+<meta name="twitter:description" content="Your agent drifts at runtime. P-MATRIX sees it and stops it." />
+<meta name="twitter:image" content="https://p-matrix.io/pmatrix-logo-square-transparent-512.png" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   P-MATRIX Homepage — CI Book v1.2 Compliant
+   ═══════════════════════════════════════════ */
+:root {
+    --bg: #F4F5F7;
+    --surface: #FFFFFF;
+    --surface-raised: #F9FAFB;
+    --border: #E0E1E6;
+    --border-subtle: #EBEBEF;
+    --text-primary: #1A1A22;
+    --text-secondary: #5C5E72;
+    --text-tertiary: #8A8C9A;
+    --tetra-blue: #2563EB;
+    --tetra-blue-soft: #3B7BFF;
+    --tetra-blue-dim: rgba(37, 99, 235, 0.08);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    background: var(--bg);
+    color: var(--text-secondary);
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 15px;
+    line-height: 1.75;
+}
+.page { max-width: 720px; margin: 0 auto; padding: 80px 32px 60px; }
+a { color: var(--tetra-blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+@keyframes breathe { 0%,100%{r:2.8;opacity:.9} 50%{r:3.6;opacity:1} }
+@keyframes wander {
+    0%{transform:translate(0,0)} 12%{transform:translate(3px,-4px)}
+    28%{transform:translate(-2.5px,-5px)} 40%{transform:translate(-4.5px,1.5px)}
+    55%{transform:translate(1px,4px)} 68%{transform:translate(4.5px,1px)}
+    80%{transform:translate(2px,-3px)} 92%{transform:translate(-1.5px,-2px)}
+    100%{transform:translate(0,0)}
+}
+@keyframes glowPulse { 0%,100%{opacity:.06} 50%{opacity:.15} }
+@keyframes edgeFlow { 0%{stroke-dashoffset:200} 100%{stroke-dashoffset:0} }
+@keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+.cg{animation:wander 12s ease-in-out infinite}
+.cd{animation:breathe 3s ease-in-out infinite}
+.gl{animation:glowPulse 3s ease-in-out infinite}
+.fl{stroke-dasharray:4 12;animation:edgeFlow 6s linear infinite}
+.hero { text-align:center; padding-bottom:56px; animation:fadeUp 0.6s ease-out; }
+.hero-logo { display:flex; align-items:center; justify-content:center; gap:20px; margin-bottom:32px; }
+.hero-wordmark { font-size:28px; font-weight:700; color:var(--text-primary); letter-spacing:-0.5px; }
+.hero-tagline { font-size:24px; font-weight:600; color:var(--text-primary); letter-spacing:-0.3px; margin-bottom:8px; }
+.hero-sub { font-size:15px; color:var(--text-tertiary); }
+.divider { border:none; border-top:1px solid var(--border-subtle); margin:0 0 48px; }
+.section { margin-bottom:56px; animation:fadeUp 0.6s ease-out; }
+.section-label { font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-tertiary); margin-bottom:20px; }
+.brand-promise { font-size:18px; font-weight:500; color:var(--text-primary); line-height:1.6; margin-bottom:32px; }
+.features { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.feature-card { background:var(--surface); border:1px solid var(--border-subtle); border-radius:8px; padding:24px 20px; }
+.feature-title { font-family:'JetBrains Mono',monospace; font-size:13px; font-weight:500; color:var(--text-primary); margin-bottom:8px; }
+.feature-desc { font-size:13px; color:var(--text-tertiary); line-height:1.5; }
+.get-started-title { font-size:20px; font-weight:700; color:var(--text-primary); letter-spacing:-0.3px; margin-bottom:4px; }
+.get-started-sub { font-size:14px; color:var(--text-tertiary); margin-bottom:28px; }
+.monitor-block { margin-bottom:24px; }
+.monitor-name { font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:500; letter-spacing:1px; text-transform:uppercase; color:var(--text-tertiary); margin-bottom:8px; }
+.code-block { background:var(--surface); border:1px solid var(--border-subtle); border-radius:8px; padding:16px 20px; }
+.code-block code { font-family:'JetBrains Mono',monospace; font-size:13px; color:var(--text-primary); display:block; line-height:1.9; }
+.paper-item { margin-bottom:16px; }
+.paper-item a { font-size:14px; font-weight:500; color:var(--text-primary); text-decoration:underline; text-underline-offset:2px; }
+.paper-item a:hover { color:var(--tetra-blue); }
+.paper-doi { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text-tertiary); margin-top:2px; }
+.patent-note { font-size:12px; color:var(--text-tertiary); margin-top:20px; font-style:italic; }
+footer { border-top:1px solid var(--border-subtle); padding-top:32px; margin-top:16px; text-align:center; }
+.footer-copy { font-size:12px; color:var(--text-tertiary); margin-bottom:4px; }
+.footer-links { display:flex; justify-content:center; gap:16px; margin-bottom:12px; font-size:12px; flex-wrap:wrap; }
+@media(max-width:560px){
+    .page{padding:48px 20px 40px}
+    .hero-logo{gap:14px}
+    .hero-wordmark{font-size:22px}
+    .hero-tagline{font-size:20px}
+    .features{grid-template-columns:1fr;gap:12px}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+    <!-- ── Hero ── -->
+    <div class="hero">
+        <div class="hero-logo">
+            <svg width="64" height="64" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M40 8L72 60L8 60Z" stroke="#1A1A22" stroke-width="1.3" fill="none" opacity=".75" stroke-linejoin="round"/>
+                <line x1="40" y1="8" x2="40" y2="43" stroke="#1A1A22" stroke-width=".7" opacity=".2"/>
+                <line x1="8" y1="60" x2="40" y2="43" stroke="#1A1A22" stroke-width=".7" opacity=".2"/>
+                <line x1="72" y1="60" x2="40" y2="43" stroke="#1A1A22" stroke-width=".7" opacity=".2"/>
+                <line x1="40" y1="8" x2="72" y2="60" stroke="#2563EB" stroke-width=".4" opacity=".2" class="fl"/>
+                <line x1="72" y1="60" x2="8" y2="60" stroke="#2563EB" stroke-width=".4" opacity=".2" class="fl" style="animation-delay:-2s"/>
+                <line x1="8" y1="60" x2="40" y2="8" stroke="#2563EB" stroke-width=".4" opacity=".2" class="fl" style="animation-delay:-4s"/>
+                <g class="cg">
+                    <circle cx="40" cy="43" r="8" fill="#2563EB" opacity=".06" class="gl"/>
+                    <circle cx="40" cy="43" r="2.8" fill="#2563EB" class="cd"/>
+                </g>
+                <circle cx="40" cy="8" r="1.4" fill="#1A1A22" opacity=".35"/>
+                <circle cx="8" cy="60" r="1.4" fill="#1A1A22" opacity=".35"/>
+                <circle cx="72" cy="60" r="1.4" fill="#1A1A22" opacity=".35"/>
+            </svg>
+            <span class="hero-wordmark">P-MATRIX</span>
+        </div>
+        <div class="hero-tagline">The Gravity of Trust</div>
+        <div class="hero-sub">Runtime Governance OS for AI Agents</div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ── Product ── -->
+    <div class="section">
+        <div class="brand-promise">
+            Your agent drifts at runtime.<br>
+            P-MATRIX sees it and stops it.
+        </div>
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-title">R(t)</div>
+                <div class="feature-desc">Continuous risk scoring across 4 axes</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-title">Grade</div>
+                <div class="feature-desc">Automatic safety classification from A to E</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-title">Kill Switch</div>
+                <div class="feature-desc">Autonomous halt when risk threshold breached</div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ── GET STARTED ── -->
+    <div class="section">
+        <div class="section-label">Get Started</div>
+        <div class="get-started-title">Up and running in minutes.</div>
+        <div class="get-started-sub">Get your API key at <a href="https://app.pmatrix.io" target="_blank" rel="noopener">app.pmatrix.io</a> &rarr; Settings &rarr; API Keys</div>
+
+        <div class="monitor-block">
+            <div class="monitor-name">OpenClaw</div>
+            <div class="code-block">
+                <code>$ openclaw plugins install @pmatrix/openclaw-monitor</code>
+                <code>$ npx @pmatrix/openclaw-monitor setup</code>
+                <code>$ openclaw gateway</code>
+            </div>
+        </div>
+
+        <div class="monitor-block">
+            <div class="monitor-name">Claude Code</div>
+            <div class="code-block">
+                <code>$ npm install -g @pmatrix/claude-code-monitor</code>
+                <code>$ pmatrix-cc setup --api-key &lt;key&gt;</code>
+            </div>
+        </div>
+
+        <div class="monitor-block">
+            <div class="monitor-name">Cursor</div>
+            <div class="code-block">
+                <code>$ npm install -g @pmatrix/cursor-monitor</code>
+                <code>$ pmatrix-cursor setup --api-key &lt;key&gt;</code>
+            </div>
+        </div>
+
+        <div class="monitor-block">
+            <div class="monitor-name">Gemini CLI</div>
+            <div class="code-block">
+                <code>$ npm install -g @pmatrix/gemini-cli-monitor</code>
+                <code>$ pmatrix-gemini setup --api-key &lt;key&gt;</code>
+            </div>
+        </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ── Papers ── -->
+    <div class="section">
+        <div class="section-label">Papers</div>
+        <div class="paper-item">
+            <a href="https://doi.org/10.5281/zenodo.18682846" target="_blank" rel="noopener">
+                P-MATRIX Runtime State Representation: A Portable Coordinate System for Autonomous Agent Operational Posture
+            </a>
+            <div class="paper-doi">doi:10.5281/zenodo.18682846</div>
+        </div>
+        <div class="paper-item">
+            <a href="https://doi.org/10.5281/zenodo.18683912" target="_blank" rel="noopener">
+                P-MATRIX: A Mutual Verification Protocol for Runtime Governance Across Autonomous Nodes
+            </a>
+            <div class="paper-doi">doi:10.5281/zenodo.18683912</div>
+        </div>
+        <div class="patent-note">Underlying technology is patent pending.</div>
+    </div>
+
+    <!-- ── Footer ── -->
+    <footer>
+        <div class="footer-links">
+            <a href="https://github.com/p-matrix" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://www.npmjs.com/package/@pmatrix/openclaw-monitor" target="_blank" rel="noopener">npm (OpenClaw)</a>
+            <a href="https://www.npmjs.com/package/@pmatrix/claude-code-monitor" target="_blank" rel="noopener">npm (Claude Code)</a>
+            <a href="https://x.com/pmatrix_" target="_blank" rel="noopener">X / Twitter</a>
+            <a href="mailto:architect@p-matrix.io">architect@p-matrix.io</a>
+        </div>
+        <div class="footer-copy">&copy; 2026 P-MATRIX. All rights reserved.</div>
+    </footer>
+
+</div>
+</body>
+</html>
