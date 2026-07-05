@@ -3,115 +3,802 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- P-MATRIX holding page — 2026-06-30. Soul-clean per landing handoff brief §4 (prior soul-redline content removed). -->
-<title>P-MATRIX</title>
-<meta name="description" content="P-MATRIX is building trust infrastructure for the age of AI agents.">
-<meta property="og:title" content="P-MATRIX" />
-<meta property="og:description" content="P-MATRIX is building trust infrastructure for the age of AI agents." />
+<title>P-MATRIX — See how your AI agents behave</title>
+<meta name="description" content="P-MATRIX turns each AI agent's runtime behavior into a tamper-evident record it can show — to you, an auditor, or another agent. It reads behavior, never content.">
+<meta property="og:title" content="P-MATRIX — See how your AI agents behave" />
+<meta property="og:description" content="Turn each AI agent's behavior into a record it can show. Reads behavior, never content." />
 <meta property="og:image" content="https://p-matrix.io/pmatrix-logo-square-transparent-512.png" />
 <meta property="og:url" content="https://p-matrix.io" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@pmatrix_" />
-<meta name="twitter:title" content="P-MATRIX" />
-<meta name="twitter:description" content="P-MATRIX is building trust infrastructure for the age of AI agents." />
+<meta name="twitter:title" content="P-MATRIX — See how your AI agents behave" />
+<meta name="twitter:description" content="Turn each AI agent's behavior into a record it can show. Reads behavior, never content." />
 <meta name="twitter:image" content="https://p-matrix.io/pmatrix-logo-square-transparent-512.png" />
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* ═══════════════════════════════════════════
-   P-MATRIX Holding Page — CI Book v2.0 tokens
+   P-MATRIX Homepage — CI Book v2.0 Compliant
    ═══════════════════════════════════════════ */
 :root {
     --bg: #F4F5F7;
     --surface: #FFFFFF;
+    --surface-raised: #F9FAFB;
     --border: #E0E1E6;
+    --border-subtle: #EBEBEF;
     --text-primary: #1A1A22;
     --text-secondary: #5C5E72;
     --text-tertiary: #8A8C9A;
     --tetra-blue: #2563EB;
+    --tetra-blue-soft: #3B7BFF;
+    --tetra-blue-dim: rgba(37, 99, 235, 0.08);
+    --live: #16A34A;
+    --live-dim: rgba(22,163,74,.10);
+    --building: #D97706;
 }
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
+
 body {
     background: var(--bg);
     color: var(--text-secondary);
     font-family: 'DM Sans', -apple-system, sans-serif;
     -webkit-font-smoothing: antialiased;
-    line-height: 1.7;
+    font-size: 15px;
+    line-height: 1.75;
 }
+
+.page {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 80px 32px 60px;
+}
+
+a { color: var(--tetra-blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Animations (CI Book v2.0) ── */
 @keyframes breathe { 0%,100%{r:2.8;opacity:.9} 50%{r:3.6;opacity:1} }
 @keyframes wander {
-    0%{transform:translate(0,0)} 28%{transform:translate(-2.5px,-5px)}
-    55%{transform:translate(1px,4px)} 80%{transform:translate(2px,-3px)}
+    0%{transform:translate(0,0)}
+    12%{transform:translate(3px,-4px)}
+    28%{transform:translate(-2.5px,-5px)}
+    40%{transform:translate(-4.5px,1.5px)}
+    55%{transform:translate(1px,4px)}
+    68%{transform:translate(4.5px,1px)}
+    80%{transform:translate(2px,-3px)}
+    92%{transform:translate(-1.5px,-2px)}
     100%{transform:translate(0,0)}
 }
 @keyframes glowPulse { 0%,100%{opacity:.06} 50%{opacity:.15} }
 @keyframes edgeFlow { 0%{stroke-dashoffset:200} 100%{stroke-dashoffset:0} }
-@keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
 .cg{animation:wander 12s ease-in-out infinite}
 .cd{animation:breathe 3s ease-in-out infinite}
 .gl{animation:glowPulse 3s ease-in-out infinite}
 .fl{stroke-dasharray:4 12;animation:edgeFlow 6s linear infinite}
 
-.wrap {
-    min-height: 100vh;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    text-align: center; padding: 48px 24px;
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
 }
-.logo { margin-bottom: 28px; animation: fadeUp .7s ease both; }
-.wordmark {
-    font-size: 22px; font-weight: 700; letter-spacing: 3px;
+
+/* ── Hero ── */
+.hero {
+    text-align: center;
+    padding-bottom: 40px;
+    animation: fadeUp 0.6s ease-out;
+}
+
+.hero-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 28px;
+}
+
+.hero-wordmark {
+    font-size: 28px;
+    font-weight: 700;
     color: var(--text-primary);
-    font-family: 'JetBrains Mono', monospace;
-    margin-bottom: 40px;
-    animation: fadeUp .7s ease .1s both;
+    letter-spacing: -0.5px;
 }
-.headline {
-    font-size: clamp(24px, 4vw, 34px);
-    font-weight: 600; letter-spacing: -0.5px; line-height: 1.4;
+
+.hero-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--tetra-blue);
+    margin-bottom: 18px;
+}
+
+.hero-headline {
+    font-size: 34px;
+    font-weight: 700;
     color: var(--text-primary);
-    max-width: 620px; margin-bottom: 16px;
-    animation: fadeUp .7s ease .2s both;
+    letter-spacing: -0.8px;
+    line-height: 1.18;
+    margin-bottom: 16px;
 }
-.sub {
-    font-size: 15px; color: var(--text-tertiary);
-    animation: fadeUp .7s ease .3s both;
+
+.hero-subline {
+    font-size: 16px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    max-width: 580px;
+    margin: 0 auto 14px;
 }
-.contact {
-    margin-top: 48px;
+
+.hero-tagline {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-tertiary);
+    letter-spacing: 0.2px;
+    margin-bottom: 26px;
+}
+
+/* ── CTA ── */
+.cta-row {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 11px 22px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    background: var(--surface);
+    transition: background .15s, border-color .15s;
+}
+.btn:hover { background: var(--surface-raised); text-decoration: none; }
+
+.btn-primary {
+    background: var(--text-primary);
+    color: #fff;
+    border-color: var(--text-primary);
+}
+.btn-primary:hover { background: #000; }
+
+/* ── Contrast line ── */
+.contrast {
+    text-align: center;
+    padding: 8px 0 44px;
+    animation: fadeUp 0.6s ease-out;
+}
+.contrast-old {
+    font-size: 16px;
+    color: var(--text-tertiary);
+}
+.contrast-new {
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.5;
+    margin-top: 4px;
+}
+
+/* ── Divider ── */
+.divider {
+    border: none;
+    border-top: 1px solid var(--border-subtle);
+    margin: 0 0 48px;
+}
+
+/* ── Section ── */
+.section {
+    margin-bottom: 56px;
+    animation: fadeUp 0.6s ease-out;
+}
+
+.section-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.section-label {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 12px; letter-spacing: .5px;
-    animation: fadeUp .7s ease .4s both;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
 }
-.contact a { color: var(--tetra-blue); text-decoration: none; }
-.contact a:hover { text-decoration: underline; }
+
+/* ── Demo card (illustrative) ── */
+.demo {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 22px 18px;
+    box-shadow: 0 1px 2px rgba(26,26,34,.04);
+}
+
+.demo-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+.demo-kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.6px;
+    color: var(--text-secondary);
+}
+.demo-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.6px;
+    color: var(--text-tertiary);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2px 7px;
+}
+.demo-verified {
+    margin-left: auto;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--live);
+    background: var(--live-dim);
+    padding: 3px 9px;
+    border-radius: 5px;
+}
+
+.demo-agent {
+    padding-bottom: 14px;
+    margin-bottom: 6px;
+    border-bottom: 1px solid var(--border-subtle);
+}
+.demo-agent-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+.demo-agent-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--text-tertiary);
+    margin-left: 8px;
+}
+
+.demo-row {
+    display: flex;
+    gap: 14px;
+    padding: 8px 0;
+    font-size: 14px;
+}
+.demo-k {
+    width: 116px;
+    flex-shrink: 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--text-tertiary);
+    padding-top: 1px;
+}
+.demo-v { color: var(--text-secondary); }
+.demo-v .tool {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    color: var(--text-primary);
+    background: var(--surface-raised);
+    border: 1px solid var(--border-subtle);
+    border-radius: 4px;
+    padding: 1px 7px;
+    margin-right: 5px;
+    white-space: nowrap;
+}
+.demo-none {
+    font-weight: 600;
+    color: var(--live);
+}
+.demo-foot {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-subtle);
+    font-size: 13px;
+    color: var(--text-tertiary);
+}
+.demo-caption {
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-tertiary);
+    margin-top: 12px;
+}
+
+/* ── Lead / cards ── */
+.brand-promise {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1.6;
+    margin-bottom: 28px;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.feature-card {
+    background: var(--surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: 22px 20px;
+}
+
+.feature-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.feature-desc {
+    font-size: 13px;
+    color: var(--text-tertiary);
+    line-height: 1.55;
+}
+
+/* ── Stages (Self / Other / Field) ── */
+.stage-intro {
+    font-size: 15px;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+
+.stage-row {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border-subtle);
+}
+.stage-row:last-child { border-bottom: none; }
+
+.stage-name {
+    width: 68px;
+    flex-shrink: 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.stage-copy {
+    flex: 1;
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+}
+
+.marker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.8px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    align-self: center;
+}
+.marker.live { color: var(--live); background: var(--live-dim); }
+.marker.building { color: var(--building); background: rgba(217,119,6,.10); }
+.marker.vision { color: var(--text-tertiary); background: rgba(138,140,154,.12); }
+
+/* ── Scopes (one discipline, two co-equal scopes) ── */
+.scopes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 18px;
+}
+.scope-col {
+    background: var(--surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 10px;
+    padding: 20px 20px 10px;
+}
+.scope-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+.scope-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.4px;
+    color: var(--text-tertiary);
+    margin-bottom: 4px;
+}
+.scope-row {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-subtle);
+}
+.scope-row:last-child { border-bottom: none; padding-bottom: 4px; }
+.scope-row-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 3px;
+}
+.scope-stage {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+.scope-row-copy {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+.scope-caption {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-tertiary);
+    margin-top: 18px;
+}
+
+/* ── Available today ── */
+.avail-lead {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    margin-bottom: 18px;
+}
+
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.chip {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: var(--surface);
+    border: 1px solid var(--border-subtle);
+    padding: 5px 11px;
+    border-radius: 6px;
+}
+
+.code-line {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    color: var(--text-primary);
+    background: var(--surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+.code-line .prompt { color: var(--text-tertiary); }
+
+/* ── Papers ── */
+.paper-item { margin-bottom: 16px; }
+
+.paper-item a {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+.paper-item a:hover { color: var(--tetra-blue); }
+
+.paper-doi {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-tertiary);
+    margin-top: 2px;
+}
+
+.patent-note {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    margin-top: 20px;
+    font-style: italic;
+}
+
+/* ── Footer ── */
+footer {
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 32px;
+    margin-top: 16px;
+    text-align: center;
+}
+
+.footer-line {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--text-tertiary);
+    letter-spacing: 0.4px;
+    margin-bottom: 16px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 12px;
+    font-size: 12px;
+    flex-wrap: wrap;
+}
+
+.footer-copy {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    margin-bottom: 4px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 560px) {
+    .page { padding: 48px 20px 40px; }
+    .hero-logo { gap: 14px; }
+    .hero-wordmark { font-size: 22px; }
+    .hero-headline { font-size: 27px; }
+    .contrast-new { font-size: 17px; }
+    .features { grid-template-columns: 1fr; gap: 12px; }
+    .scopes { grid-template-columns: 1fr; }
+    .demo-k { width: 92px; }
+}
 </style>
 </head>
 <body>
-<div class="wrap">
-    <div class="logo">
-        <svg width="76" height="76" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="P-MATRIX">
-            <path d="M40 8L72 60L8 60Z" stroke="#1A1A22" stroke-width="1.3" fill="none" opacity=".75" stroke-linejoin="round"/>
-            <line x1="40" y1="8" x2="40" y2="43" stroke="#1A1A22" stroke-width=".7" opacity=".2"/>
-            <line x1="8" y1="60" x2="40" y2="43" stroke="#1A1A22" stroke-width=".7" opacity=".2"/>
-            <line x1="72" y1="60" x2="40" y2="43" stroke="#1A1A22" stroke-width=".7" opacity=".2"/>
-            <line x1="40" y1="8" x2="72" y2="60" stroke="#2563EB" stroke-width=".4" opacity=".2" class="fl"/>
-            <line x1="72" y1="60" x2="8" y2="60" stroke="#2563EB" stroke-width=".4" opacity=".2" class="fl" style="animation-delay:-2s"/>
-            <line x1="8" y1="60" x2="40" y2="8" stroke="#2563EB" stroke-width=".4" opacity=".2" class="fl" style="animation-delay:-4s"/>
-            <g class="cg">
-                <circle cx="40" cy="43" r="8" fill="#2563EB" opacity=".06" class="gl"/>
-                <circle cx="40" cy="43" r="2.8" fill="#2563EB" class="cd"/>
-            </g>
-            <circle cx="40" cy="8" r="1.4" fill="#1A1A22" opacity=".35"/>
-            <circle cx="8" cy="60" r="1.4" fill="#1A1A22" opacity=".35"/>
-            <circle cx="72" cy="60" r="1.4" fill="#1A1A22" opacity=".35"/>
-        </svg>
+<div class="page">
+
+    <!-- ── Hero ── -->
+    <div class="hero">
+        <div class="hero-logo">
+            <svg width="64" height="64" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M40 8L72 60L8 60Z" stroke="#1A1A22" stroke-width="1.3" fill="none" opacity=".75" stroke-linejoin="round"/>
+                <line x1="40" y1="8" x2="40" y2="43" stroke="#1A1A22" stroke-width=".7" opacity=".2"/>
+                <line x1="8" y1="60" x2="40" y2="43" stroke="#1A1A22" stroke-width=".7" opacity=".2"/>
+                <line x1="72" y1="60" x2="40" y2="43" stroke="#1A1A22" stroke-width=".7" opacity=".2"/>
+                <line x1="40" y1="8" x2="72" y2="60" stroke="#2563EB" stroke-width=".4" opacity=".2" class="fl"/>
+                <line x1="72" y1="60" x2="8" y2="60" stroke="#2563EB" stroke-width=".4" opacity=".2" class="fl" style="animation-delay:-2s"/>
+                <line x1="8" y1="60" x2="40" y2="8" stroke="#2563EB" stroke-width=".4" opacity=".2" class="fl" style="animation-delay:-4s"/>
+                <g class="cg">
+                    <circle cx="40" cy="43" r="8" fill="#2563EB" opacity=".06" class="gl"/>
+                    <circle cx="40" cy="43" r="2.8" fill="#2563EB" class="cd"/>
+                </g>
+                <circle cx="40" cy="8" r="1.4" fill="#1A1A22" opacity=".35"/>
+                <circle cx="8" cy="60" r="1.4" fill="#1A1A22" opacity=".35"/>
+                <circle cx="72" cy="60" r="1.4" fill="#1A1A22" opacity=".35"/>
+            </svg>
+            <span class="hero-wordmark">P-MATRIX</span>
+        </div>
+        <div class="hero-eyebrow">AI-Native Trust Infrastructure</div>
+        <div class="hero-headline">See how your AI agents behave.</div>
+        <div class="hero-subline">
+            AI agents act on your behalf — calling tools, touching real systems.
+            P-MATRIX turns each agent's behavior into a tamper-evident record it can show:
+            to you, an auditor, or another agent. It reads behavior, never content.
+        </div>
+        <div class="hero-tagline">The Gravity of Trust.</div>
+        <div class="cta-row">
+            <a class="btn btn-primary" href="https://app.pmatrix.io" target="_blank" rel="noopener">Open Dashboard</a>
+            <a class="btn" href="#example">See an example</a>
+        </div>
     </div>
-    <div class="wordmark">P-MATRIX</div>
-    <h1 class="headline">P-MATRIX is building trust infrastructure for the age of AI agents.</h1>
-    <p class="sub">A new site is coming soon.</p>
-    <div class="contact"><a href="mailto:architect@p-matrix.io">architect@p-matrix.io</a></div>
+
+    <!-- ── Contrast line ── -->
+    <div class="contrast">
+        <div class="contrast-old">Logs tell you <em>that</em> an agent ran.</div>
+        <div class="contrast-new">P-MATRIX shows <em>how</em> it behaved — without reading what it handled.</div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ── Example (illustrative) ── -->
+    <div class="section" id="example">
+        <div class="section-head">
+            <span class="section-label">What you get</span>
+            <span class="marker live">LIVE</span>
+        </div>
+        <div class="demo">
+            <div class="demo-head">
+                <span class="demo-kicker">Behavior record</span>
+                <span class="demo-tag">Illustrative</span>
+                <span class="demo-verified">✓ Verified</span>
+            </div>
+            <div class="demo-agent">
+                <span class="demo-agent-name">coding-assistant</span>
+                <span class="demo-agent-meta">session a1f2 · acting for User 1</span>
+            </div>
+            <div class="demo-row">
+                <span class="demo-k">What it did</span>
+                <span class="demo-v"><span class="tool">edit_file</span><span class="tool">run_tests</span><span class="tool">http_request</span></span>
+            </div>
+            <div class="demo-row">
+                <span class="demo-k">Checked by</span>
+                <span class="demo-v">an independent verifier &nbsp;✓</span>
+            </div>
+            <div class="demo-row">
+                <span class="demo-k">Content read</span>
+                <span class="demo-v demo-none">none — prompts &amp; outputs stay private</span>
+            </div>
+            <div class="demo-foot">
+                → A record the agent can carry and show anywhere — to you, an auditor, or the next agent it works with.
+            </div>
+        </div>
+        <div class="demo-caption">Illustrative — sample data, not a live run.</div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ── What it is ── -->
+    <div class="section">
+        <div class="section-head">
+            <span class="section-label">How it works</span>
+        </div>
+        <div class="brand-promise">
+            P-MATRIX makes an agent's behavior legible — to its user, an auditor, or another agent — without anyone reading the work itself.
+        </div>
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-title">Behavior, not content</div>
+                <div class="feature-desc">We watch what an agent does — the tools it calls, the actions it takes. Never the prompts or answers it handles.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-title">A record it can show</div>
+                <div class="feature-desc">Each run becomes a tamper-evident record the agent carries with it — reusable wherever trust needs to be shown.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-title">Operator-run, not on-chain</div>
+                <div class="feature-desc">Trust clears through a neutral operator, the way a card network settles a payment. No blockchain, no token, no copy of your data.</div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ── Available today ── -->
+    <div class="section">
+        <div class="section-head">
+            <span class="section-label">Available today</span>
+            <span class="marker live">LIVE</span>
+        </div>
+        <div class="avail-lead">
+            Drop-in monitors for the agent stacks you already use. One install. Runs on your machine — no content leaves it.
+        </div>
+        <div class="chips">
+            <span class="chip">OpenClaw</span>
+            <span class="chip">Claude Code</span>
+            <span class="chip">Cursor</span>
+            <span class="chip">Gemini CLI</span>
+            <span class="chip">Codex</span>
+            <span class="chip">Hermes</span>
+        </div>
+        <div class="code-line"><span class="prompt">$</span> openclaw plugins install @pmatrix/openclaw-monitor</div>
+        <div style="font-size:13px;">
+            <a href="https://github.com/p-matrix/pmatrix-platform" target="_blank" rel="noopener">github.com/p-matrix</a>
+            &nbsp;·&nbsp;
+            <a href="https://app.pmatrix.io" target="_blank" rel="noopener">Open Dashboard</a>
+        </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ── One discipline, two scopes (architecture) ── -->
+    <div class="section">
+        <div class="section-head">
+            <span class="section-label">One discipline &nbsp;·&nbsp; two scopes</span>
+        </div>
+        <div class="stage-intro">The same trust records work at two scopes — told apart by where the trust boundary sits, not by order.</div>
+        <div class="scopes">
+            <div class="scope-col">
+                <div class="scope-name">Within your organization</div>
+                <div class="scope-sub">one trust boundary</div>
+                <div class="scope-row">
+                    <div class="scope-row-head">
+                        <span class="scope-stage">Self</span>
+                        <span class="marker live">LIVE</span>
+                    </div>
+                    <div class="scope-row-copy">One agent makes its own behavior verifiable.</div>
+                </div>
+                <div class="scope-row">
+                    <div class="scope-row-head">
+                        <span class="scope-stage">Other</span>
+                        <span class="marker building">BUILDING</span>
+                    </div>
+                    <div class="scope-row-copy">Your agents check each other before they work together.</div>
+                </div>
+            </div>
+            <div class="scope-col">
+                <div class="scope-name">Across organizations</div>
+                <div class="scope-sub">independent parties</div>
+                <div class="scope-row">
+                    <div class="scope-row-head">
+                        <span class="scope-stage">Field</span>
+                        <span class="marker vision">VISION</span>
+                    </div>
+                    <div class="scope-row-copy">Verified agents carry portable trust into a neutral network where reputation is earned.</div>
+                </div>
+            </div>
+        </div>
+        <div class="scope-caption">Same records underneath. The difference is the trust boundary — not the order.</div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ── AI-native, end to end (identity / self-proving) ── -->
+    <div class="section">
+        <div class="section-head">
+            <span class="section-label">Why us &nbsp;·&nbsp; AI-Native, End to End</span>
+        </div>
+        <div class="brand-promise">
+            We build P-MATRIX the same way we ask you to run your agents — checked, verified, on the record. We were our own first customer.
+        </div>
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-title">Built with AI</div>
+                <div class="feature-desc">We build with AI agents as a verified team — every change checked and recorded, the way we watch yours.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-title">On its own trust layer</div>
+                <div class="feature-desc">That work runs on the same trust layer the product is made of — identity, evidence, and history.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-title">Proven on ourselves</div>
+                <div class="feature-desc">What we proved on ourselves first is what you run. Not a slide — a system we live in.</div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ── Research & IP ── -->
+    <div class="section" id="research">
+        <div class="section-head">
+            <span class="section-label">Research &amp; IP</span>
+        </div>
+        <div class="paper-item">
+            <a href="https://doi.org/10.5281/zenodo.18683912" target="_blank" rel="noopener">
+                Mutual-verification protocol
+            </a>
+            <div class="paper-doi">Zenodo · doi:10.5281/zenodo.18683912</div>
+        </div>
+        <div class="paper-item">
+            <a href="https://doi.org/10.5281/zenodo.18682846" target="_blank" rel="noopener">
+                Runtime state representation
+            </a>
+            <div class="paper-doi">Zenodo · doi:10.5281/zenodo.18682846</div>
+        </div>
+        <div class="patent-note">Underlying technology is patent pending.</div>
+    </div>
+
+    <!-- ── Footer ── -->
+    <footer>
+        <div class="footer-line">See how your AI agents behave.</div>
+        <div class="footer-links">
+            <a href="https://github.com/p-matrix" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://www.npmjs.com/org/pmatrix" target="_blank" rel="noopener">npm</a>
+            <a href="https://x.com/pmatrix_" target="_blank" rel="noopener">X / Twitter</a>
+            <a href="mailto:architect@p-matrix.io">architect@p-matrix.io</a>
+        </div>
+        <div class="footer-copy">&copy; 2026 P-MATRIX &nbsp;·&nbsp; Apache-2.0</div>
+    </footer>
+
 </div>
 </body>
 </html>
