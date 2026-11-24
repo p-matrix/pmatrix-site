@@ -270,6 +270,28 @@
     .g-core-violet { fill: #bfd5ff; filter: drop-shadow(0 0 7px rgba(130, 144, 254, .7)); }
     .g-core-mint { fill: #afe5dc; filter: drop-shadow(0 0 7px rgba(130, 235, 199, .7)); }
     .g-pulse { animation: pulse 4.5s ease-in-out infinite; }
+    /* P-FIELD: the shared orbit turns slowly; each member counter-turns so it keeps its own upright stance. */
+    .g-orbit { transform-box: view-box; transform-origin: 60px 60px; animation: gentle-turn 80s linear infinite; }
+    .g-upright { transform-box: view-box; animation: counter-turn 80s linear infinite; }
+    @keyframes counter-turn { from { transform: rotate(0); } to { transform: rotate(-360deg); } }
+    /* Membership: 3 -> 4 -> 5 -> 6, then 5 -> 4 -> 5 -> 6 on a 12s cycle. Static (all six) when motion is reduced. */
+    .m-stay { animation: join-once 1.2s ease-out 2s both; }
+    .m-long { animation: member-long 12s ease-in-out 4s infinite both; }
+    .m-short { animation: member-short 12s ease-in-out 6s infinite both; }
+    @keyframes join-once {
+      from { opacity: 0; transform: translate(var(--jx), var(--jy)); }
+      to { opacity: 1; transform: translate(0, 0); }
+    }
+    @keyframes member-long {
+      0% { opacity: 0; transform: translate(var(--jx), var(--jy)); }
+      10%, 66.7% { opacity: 1; transform: translate(0, 0); }
+      76.7%, 100% { opacity: 0; transform: translate(var(--jx), var(--jy)); }
+    }
+    @keyframes member-short {
+      0% { opacity: 0; transform: translate(var(--jx), var(--jy)); }
+      10%, 33.3% { opacity: 1; transform: translate(0, 0); }
+      43.3%, 100% { opacity: 0; transform: translate(var(--jx), var(--jy)); }
+    }
     .g-tetra { fill: none; stroke: #A9BDD8; stroke-width: 1; stroke-linejoin: round; opacity: .82; }
     .g-tetra-in { fill: none; stroke: #8DA6C8; stroke-width: .6; opacity: .45; }
     /* P-ENGINE alone: the judgment point, inside a faint outline of the P-NODE it belongs to. */
@@ -409,9 +431,15 @@
         <article class="part field">
           <svg class="glyph glyph-part" viewBox="0 0 120 120" aria-hidden="true">
             <circle class="g-shared" cx="60" cy="60" r="44" />
-            <path class="g-tetra" d="M60 6L71 24L49 24Z"/><path class="g-tetra-in" d="M60 6L60 18.5 M49 24L60 18.5 M71 24L60 18.5"/><g class="g-pulse"><circle class="g-halo" cx="60" cy="18.5" r="5.5"/><circle class="g-core-blue" cx="60" cy="18.5" r="2.6"/></g>
-            <path class="g-tetra" d="M98.1 72L109.1 90L87.1 90Z"/><path class="g-tetra-in" d="M98.1 72L98.1 84.5 M87.1 90L98.1 84.5 M109.1 90L98.1 84.5"/><g class="g-pulse later"><circle class="g-halo" cx="98.1" cy="84.5" r="5.5"/><circle class="g-core-violet" cx="98.1" cy="84.5" r="2.6"/></g>
-            <path class="g-tetra" d="M21.9 72L32.9 90L10.9 90Z"/><path class="g-tetra-in" d="M21.9 72L21.9 84.5 M10.9 90L21.9 84.5 M32.9 90L21.9 84.5"/><g class="g-pulse latest"><circle class="g-halo" cx="21.9" cy="84.5" r="5.5"/><circle class="g-core-mint" cx="21.9" cy="84.5" r="2.6"/></g>
+            <!-- Members circle the shared orbit; each stays upright. Three are always there, others join and leave. -->
+            <g class="g-orbit">
+              <g class="g-upright" style="transform-origin:60px 16px"><path class="g-tetra" d="M60 6.5L70.45 23.6L49.55 23.6Z"/><path class="g-tetra-in" d="M60 6.5L60 18.38 M49.55 23.6L60 18.38 M70.45 23.6L60 18.38"/><g class="g-pulse"><circle class="g-halo" cx="60" cy="18.38" r="5.23"/><circle class="g-core-blue" cx="60" cy="18.38" r="2.47"/></g></g>
+              <g class="g-upright" style="transform-origin:98.11px 82px"><path class="g-tetra" d="M98.11 73L108.01 89.2L88.21 89.2Z"/><path class="g-tetra-in" d="M98.11 73L98.11 84.25 M88.21 89.2L98.11 84.25 M108.01 89.2L98.11 84.25"/><g class="g-pulse latest"><circle class="g-halo" cx="98.11" cy="84.25" r="4.95"/><circle class="g-core-mint" cx="98.11" cy="84.25" r="2.34"/></g></g>
+              <g class="g-upright" style="transform-origin:21.89px 82px"><path class="g-tetra" d="M21.89 72L32.89 90L10.89 90Z"/><path class="g-tetra-in" d="M21.89 72L21.89 84.5 M10.89 90L21.89 84.5 M32.89 90L21.89 84.5"/><g class="g-pulse later"><circle class="g-halo" cx="21.89" cy="84.5" r="5.5"/><circle class="g-core-violet" cx="21.89" cy="84.5" r="2.6"/></g></g>
+              <g class="g-upright" style="transform-origin:98.11px 38px"><g class="g-member m-stay" style="--jx:11.26px;--jy:-6.5px"><path class="g-tetra" d="M98.11 30.5L106.36 44L89.86 44Z"/><path class="g-tetra-in" d="M98.11 30.5L98.11 39.88 M89.86 44L98.11 39.88 M106.36 44L98.11 39.88"/><g class="g-pulse later"><circle class="g-halo" cx="98.11" cy="39.88" r="4.12"/><circle class="g-core-violet" cx="98.11" cy="39.88" r="2.2"/></g></g></g>
+              <g class="g-upright" style="transform-origin:60px 104px"><g class="g-member m-long" style="--jx:0px;--jy:13px"><path class="g-tetra" d="M60 96L68.8 110.4L51.2 110.4Z"/><path class="g-tetra-in" d="M60 96L60 106 M51.2 110.4L60 106 M68.8 110.4L60 106"/><g class="g-pulse"><circle class="g-halo" cx="60" cy="106" r="4.4"/><circle class="g-core-blue" cx="60" cy="106" r="2.2"/></g></g></g>
+              <g class="g-upright" style="transform-origin:21.89px 38px"><g class="g-member m-short" style="--jx:-11.26px;--jy:-6.5px"><path class="g-tetra" d="M21.89 31L29.59 43.6L14.19 43.6Z"/><path class="g-tetra-in" d="M21.89 31L21.89 39.75 M14.19 43.6L21.89 39.75 M29.59 43.6L21.89 39.75"/><g class="g-pulse latest"><circle class="g-halo" cx="21.89" cy="39.75" r="3.85"/><circle class="g-core-mint" cx="21.89" cy="39.75" r="2.2"/></g></g></g>
+            </g>
           </svg>
           <h3>P-FIELD<span class="dot" aria-hidden="true">·</span><span class="role">We</span></h3>
           <p>Agents work toward a shared goal under common rules. Each makes its own decisions.</p>
