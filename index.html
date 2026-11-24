@@ -188,27 +188,6 @@
       animation: rise .9s .45s both cubic-bezier(.2,.8,.25,1);
     }
     .sub .line { display: block; }
-    .jump {
-      margin-top: clamp(56px, 9vh, 104px);
-      animation: rise .9s .6s both cubic-bezier(.2,.8,.25,1);
-    }
-    .jump a {
-      color: #d6e0ee;
-      text-decoration: none;
-      font-size: clamp(.9rem, 1.1vw, 1rem);
-      font-weight: 500;
-      letter-spacing: .05em;
-      padding: 6px 2px 5px;
-      border-bottom: 1px solid rgba(136, 198, 250, .35);
-      transition: color .2s, border-color .2s;
-    }
-    .jump a:hover { color: #fff; border-color: rgba(136, 198, 250, .8); }
-    .jump .arrow { color: var(--blue); margin-left: .35em; }
-    a:focus-visible, .how h2:focus-visible {
-      outline: 2px solid var(--blue); outline-offset: 5px; border-radius: 4px;
-    }
-    .how h2:focus { outline: none; }
-    .how h2:focus-visible { outline: 2px solid var(--blue); }
 
     /* Second section: how P-MATRIX works. */
     .how {
@@ -232,7 +211,6 @@
     .how-inner { position: relative; z-index: 1; width: min(100%, 1080px); margin: 0 auto; }
     .how h2 {
       margin: 0 0 clamp(36px, 6vh, 56px);
-      scroll-margin-top: 32px;
       text-align: center;
       font-size: clamp(1.3rem, 2.2vw, 1.8rem);
       font-weight: 500;
@@ -308,9 +286,6 @@
       border-top: 1px solid rgba(181, 203, 231, .08);
       background: #080b10;
     }
-    @media (prefers-reduced-motion: no-preference) {
-      html { scroll-behavior: smooth; }
-    }
     @keyframes rise { from { opacity: 0; transform: translateY(21px); filter: blur(6px); } to { opacity: 1; transform: translateY(0); filter: blur(0); } }
     @keyframes appear { from {opacity:0;} to {opacity:1;} }
     @keyframes gentle-turn { from {transform:rotate(0)} to {transform:rotate(360deg)} }
@@ -326,7 +301,6 @@
       .corner { width: 17px; height: 17px; opacity: .28; }
       .eyebrow { font-size: .78rem; letter-spacing: .06em; }
       .sub { font-size: .95rem; max-width: 340px; }
-      .jump { margin-top: clamp(56px, 9vh, 80px); }
       .how { padding: 64px 18px 56px; }
       .flow { grid-template-columns: minmax(0, 1fr); }
       .engine-mark, .engine-text, .stem, .part.node, .part.link, .part.field { grid-column: 1; grid-row: auto; }
@@ -343,7 +317,6 @@
       .symbol { margin-bottom: 18px; width: 78px; height: 78px; }
       .brand { font-size: clamp(2rem, 5vh, 3.4rem); }
       .rule { margin: 25px 0 18px; }
-      .jump { margin-top: 36px; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; transition: none !important; }
@@ -387,13 +360,12 @@
       <div class="rule" aria-hidden="true"></div>
       <p class="tagline">AI agents representing different people and organizations work together.</p>
       <p class="sub"><span class="line">You decide what your agent can do.</span> <span class="line">You can change or withdraw that authority.</span></p>
-      <p class="jump"><a href="#how" id="jump-how">How P-MATRIX works<span class="arrow" aria-hidden="true">↓</span></a></p>
     </div>
   </main>
 
   <section class="how" aria-labelledby="how">
     <div class="how-inner">
-      <h2 id="how" tabindex="-1">How P-MATRIX works</h2>
+      <h2 id="how">How P-MATRIX works</h2>
       <div class="flow">
         <div class="engine-mark" aria-hidden="true">
           <svg class="glyph glyph-engine" viewBox="0 0 80 80">
@@ -450,20 +422,5 @@
 
   <footer class="site-footer">© P-MATRIX</footer>
 
-  <script>
-    // Move keyboard focus with the in-page link so the next Tab continues inside the section.
-    (function () {
-      var link = document.getElementById('jump-how');
-      var target = document.getElementById('how');
-      if (!link || !target) return;
-      link.addEventListener('click', function (event) {
-        event.preventDefault();
-        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
-        target.focus({ preventScroll: true });
-        if (history.pushState) history.pushState(null, '', '#how');
-      });
-    })();
-  </script>
 </body>
 </html>
