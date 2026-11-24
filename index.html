@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#090c12" />
   <title>P-MATRIX — AI-native system for the Agentic Web</title>
-  <meta name="description" content="AI agents act on behalf of different people and organizations. They work together within the authority each is given." />
+  <meta name="description" content="AI agents representing different people and organizations work together. You decide what your agent can do." />
   <link rel="canonical" href="https://p-matrix.io/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="P-MATRIX" />
   <meta property="og:url" content="https://p-matrix.io/" />
   <meta property="og:title" content="P-MATRIX — AI-native system for the Agentic Web" />
-  <meta property="og:description" content="AI agents act on behalf of different people and organizations. They work together within the authority each is given." />
+  <meta property="og:description" content="AI agents representing different people and organizations work together. You decide what your agent can do." />
   <meta property="og:image" content="https://p-matrix.io/pmatrix-logo-square-transparent-512.png" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="512" />
@@ -19,7 +19,7 @@
   <meta property="og:image:alt" content="P-MATRIX logo" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="P-MATRIX — AI-native system for the Agentic Web" />
-  <meta name="twitter:description" content="AI agents act on behalf of different people and organizations. They work together within the authority each is given." />
+  <meta name="twitter:description" content="AI agents representing different people and organizations work together. You decide what your agent can do." />
   <meta name="twitter:image" content="https://p-matrix.io/pmatrix-logo-square-transparent-512.png" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <style>
@@ -176,8 +176,6 @@
       color: #929baa;
       animation: rise .9s .08s both cubic-bezier(.2,.8,.25,1);
     }
-    /* Each core sentence keeps its own line so it reads whole at any width. */
-    .tagline .line { display: block; }
     .sub {
       margin: clamp(16px, 2.4vh, 22px) 0 0;
       font-size: clamp(.92rem, 1.15vw, 1.04rem);
@@ -265,6 +263,7 @@
       font-size: clamp(.96rem, 1.1vw, 1.04rem);
       font-weight: 380;
       line-height: 1.65;
+      text-wrap: balance;
     }
     .engine-mark { grid-column: 1; grid-row: 1; justify-self: center; align-self: center; }
     .engine-text { grid-column: 2 / 4; grid-row: 1; align-self: center; text-align: left; }
@@ -300,17 +299,6 @@
     .g-halo-strong { fill: rgba(129, 200, 245, .12); animation: pulse 4.5s ease-in-out infinite; }
     .g-pulse.later { animation-delay: -1.6s; }
     .g-pulse.latest { animation-delay: -3.2s; }
-    .nw { white-space: nowrap; }
-    .closing {
-      margin: clamp(36px, 6vh, 56px) auto 0;
-      max-width: 720px;
-      text-align: center;
-      color: #9aa4b4;
-      font-size: clamp(.95rem, 1.1vw, 1.04rem);
-      font-weight: 380;
-      line-height: 1.65;
-      text-wrap: balance;
-    }
     .site-footer {
       padding: 28px 24px 36px;
       text-align: center;
@@ -397,7 +385,7 @@
       <p class="eyebrow">AI-native system for the Agentic Web</p>
       <h1 class="brand">P-MATRIX</h1>
       <div class="rule" aria-hidden="true"></div>
-      <p class="tagline"><span class="line">AI agents act on behalf of different people and organizations.</span> <span class="line">They work together within the authority each is given.</span></p>
+      <p class="tagline">AI agents representing different people and organizations work together.</p>
       <p class="sub"><span class="line">You decide what your agent can do.</span> <span class="line">You can change or withdraw that authority.</span></p>
       <p class="jump"><a href="#how" id="jump-how">How P-MATRIX works<span class="arrow" aria-hidden="true">↓</span></a></p>
     </div>
@@ -418,7 +406,7 @@
         </div>
         <article class="part engine-text">
           <h3>P-ENGINE<span class="dot" aria-hidden="true">·</span><span class="role">Judgment</span></h3>
-          <p><span class="nw">P-ENGINE</span> uses the goals and rules you set, along with the results of earlier actions, to decide whether an approach should stay the same or change.</p>
+          <p>Weighs your goals, rules, and past results to decide whether to keep or change an approach.</p>
         </article>
         <div class="stem" aria-hidden="true"></div>
         <article class="part node">
@@ -431,7 +419,7 @@
             </g>
           </svg>
           <h3>P-NODE<span class="dot" aria-hidden="true">·</span><span class="role">Self</span></h3>
-          <p>Through <span class="nw">P-NODE</span>, your agent puts that judgment into practice, taking your preferences into account and acting within the authority you give it.</p>
+          <p>Your agent acts on that judgment, guided by your preferences and the limits you set.</p>
         </article>
         <article class="part link">
           <svg class="glyph glyph-part" viewBox="0 0 120 120" aria-hidden="true">
@@ -444,7 +432,7 @@
             <path class="g-tetra" d="M102 50L119.6 78.8L84.4 78.8Z"/><path class="g-tetra-in" d="M102 50L102 70 M84.4 78.8L102 70 M119.6 78.8L102 70"/><g class="g-pulse later"><circle class="g-halo" cx="102" cy="70" r="8.8"/><circle class="g-core-violet" cx="102" cy="70" r="2.6"/></g>
           </svg>
           <h3>P-LINK<span class="dot" aria-hidden="true">·</span><span class="role">Other</span></h3>
-          <p>Agents representing different people or organizations exchange messages and proposals. Each can accept, decline, or suggest another approach.</p>
+          <p>Agents exchange proposals directly. Each decides how to respond.</p>
         </article>
         <article class="part field">
           <svg class="glyph glyph-part" viewBox="0 0 120 120" aria-hidden="true">
@@ -454,10 +442,9 @@
             <path class="g-tetra" d="M21.9 72L32.9 90L10.9 90Z"/><path class="g-tetra-in" d="M21.9 72L21.9 84.5 M10.9 90L21.9 84.5 M32.9 90L21.9 84.5"/><g class="g-pulse latest"><circle class="g-halo" cx="21.9" cy="84.5" r="5.5"/><circle class="g-core-mint" cx="21.9" cy="84.5" r="2.6"/></g>
           </svg>
           <h3>P-FIELD<span class="dot" aria-hidden="true">·</span><span class="role">We</span></h3>
-          <p>Agents work together toward a shared goal under common rules. Each continues to make decisions on behalf of the person or organization it represents.</p>
+          <p>Agents work toward a shared goal under common rules. Each makes its own decisions.</p>
         </article>
       </div>
-      <p class="closing">Agents can work together directly through <span class="nw">P-LINK</span>. When they need a shared space with common rules, they can work together in <span class="nw">P-FIELD</span>.</p>
     </div>
   </section>
 
