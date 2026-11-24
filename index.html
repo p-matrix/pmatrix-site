@@ -436,9 +436,10 @@
         <article class="part link">
           <svg class="glyph glyph-part" viewBox="0 0 120 120" aria-hidden="true">
             <defs>
-              <linearGradient id="g-link-arc" x1="18" y1="0" x2="102" y2="0" gradientUnits="userSpaceOnUse"><stop stop-color="#88c6fa"/><stop offset="1" stop-color="#b8b5ef"/></linearGradient>
+              <linearGradient id="g-link-arc" x1="-8" y1="0" x2="128" y2="0" gradientUnits="userSpaceOnUse"><stop stop-color="#88c6fa" stop-opacity="0"/><stop offset=".2" stop-color="#88c6fa" stop-opacity=".85"/><stop offset=".8" stop-color="#b8b5ef" stop-opacity=".85"/><stop offset="1" stop-color="#b8b5ef" stop-opacity="0"/></linearGradient>
             </defs>
-            <path class="g-arc" d="M18 50 Q60 10 102 50" stroke="url(#g-link-arc)" />
+            <!-- One flowing curve through each tetrahedron's inner point: it enters, passes the point and leaves. -->
+            <path class="g-arc" d="M-8 94 Q4 82.6 18 70 C38 52 82 52 102 70 Q116 82.6 128 94" stroke="url(#g-link-arc)" />
             <path class="g-tetra" d="M18 50L35.6 78.8L0.4 78.8Z"/><path class="g-tetra-in" d="M18 50L18 70 M0.4 78.8L18 70 M35.6 78.8L18 70"/><g class="g-pulse"><circle class="g-halo" cx="18" cy="70" r="8.8"/><circle class="g-core-blue" cx="18" cy="70" r="2.6"/></g>
             <path class="g-tetra" d="M102 50L119.6 78.8L84.4 78.8Z"/><path class="g-tetra-in" d="M102 50L102 70 M84.4 78.8L102 70 M119.6 78.8L102 70"/><g class="g-pulse later"><circle class="g-halo" cx="102" cy="70" r="8.8"/><circle class="g-core-violet" cx="102" cy="70" r="2.6"/></g>
           </svg>
