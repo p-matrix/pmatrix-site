@@ -270,6 +270,17 @@
     .g-core-violet { fill: #bfd5ff; filter: drop-shadow(0 0 7px rgba(130, 144, 254, .7)); }
     .g-core-mint { fill: #afe5dc; filter: drop-shadow(0 0 7px rgba(130, 235, 199, .7)); }
     .g-pulse { animation: pulse 4.5s ease-in-out infinite; }
+    /* P-FIELD: the shared orbit turns slowly; each member counter-turns so it keeps its own upright stance. */
+    .g-orbit { transform-box: view-box; transform-origin: 60px 60px; animation: gentle-turn 80s linear infinite; }
+    .g-upright { transform-box: view-box; animation: counter-turn 80s linear infinite; }
+    .g-join { opacity: 0; animation: join 12s ease-in-out infinite; }
+    @keyframes counter-turn { from { transform: rotate(0); } to { transform: rotate(-360deg); } }
+    @keyframes join {
+      0% { opacity: 0; transform: translate(var(--jx), var(--jy)); }
+      35% { opacity: .8; transform: translate(0, 0); }
+      75% { opacity: .8; transform: translate(0, 0); }
+      100% { opacity: 0; transform: translate(0, 0); }
+    }
     .g-tetra { fill: none; stroke: #A9BDD8; stroke-width: 1; stroke-linejoin: round; opacity: .82; }
     .g-tetra-in { fill: none; stroke: #8DA6C8; stroke-width: .6; opacity: .45; }
     /* P-ENGINE alone: the judgment point, inside a faint outline of the P-NODE it belongs to. */
@@ -409,9 +420,16 @@
         <article class="part field">
           <svg class="glyph glyph-part" viewBox="0 0 120 120" aria-hidden="true">
             <circle class="g-shared" cx="60" cy="60" r="44" />
-            <path class="g-tetra" d="M60 6L71 24L49 24Z"/><path class="g-tetra-in" d="M60 6L60 18.5 M49 24L60 18.5 M71 24L60 18.5"/><g class="g-pulse"><circle class="g-halo" cx="60" cy="18.5" r="5.5"/><circle class="g-core-blue" cx="60" cy="18.5" r="2.6"/></g>
-            <path class="g-tetra" d="M98.1 72L109.1 90L87.1 90Z"/><path class="g-tetra-in" d="M98.1 72L98.1 84.5 M87.1 90L98.1 84.5 M109.1 90L98.1 84.5"/><g class="g-pulse later"><circle class="g-halo" cx="98.1" cy="84.5" r="5.5"/><circle class="g-core-violet" cx="98.1" cy="84.5" r="2.6"/></g>
-            <path class="g-tetra" d="M21.9 72L32.9 90L10.9 90Z"/><path class="g-tetra-in" d="M21.9 72L21.9 84.5 M10.9 90L21.9 84.5 M32.9 90L21.9 84.5"/><g class="g-pulse latest"><circle class="g-halo" cx="21.9" cy="84.5" r="5.5"/><circle class="g-core-mint" cx="21.9" cy="84.5" r="2.6"/></g>
+            <!-- Members circle the shared orbit together; each stays upright, one joins from outside. -->
+            <g class="g-orbit">
+              <g class="g-upright" style="transform-origin:60px 16px"><path class="g-tetra" d="M60 6.5L70.45 23.6L49.55 23.6Z"/><path class="g-tetra-in" d="M60 6.5L60 18.38 M49.55 23.6L60 18.38 M70.45 23.6L60 18.38"/><g class="g-pulse"><circle class="g-halo" cx="60" cy="18.38" r="5.23"/><circle class="g-core-blue" cx="60" cy="18.38" r="2.47"/></g></g>
+              <g class="g-upright" style="transform-origin:98.11px 38px"><path class="g-tetra" d="M98.11 30.5L106.36 44L89.86 44Z"/><path class="g-tetra-in" d="M98.11 30.5L98.11 39.88 M89.86 44L98.11 39.88 M106.36 44L98.11 39.88"/><g class="g-pulse later"><circle class="g-halo" cx="98.11" cy="39.88" r="4.12"/><circle class="g-core-violet" cx="98.11" cy="39.88" r="2.2"/></g></g>
+              <g class="g-upright" style="transform-origin:96.04px 85.24px"><path class="g-tetra" d="M96.04 76.24L105.94 92.44L86.14 92.44Z"/><path class="g-tetra-in" d="M96.04 76.24L96.04 87.49 M86.14 92.44L96.04 87.49 M105.94 92.44L96.04 87.49"/><g class="g-pulse latest"><circle class="g-halo" cx="96.04" cy="87.49" r="4.95"/><circle class="g-core-mint" cx="96.04" cy="87.49" r="2.34"/></g></g>
+              <g class="g-upright" style="transform-origin:56.17px 103.83px"><path class="g-tetra" d="M56.17 95.83L64.97 110.23L47.37 110.23Z"/><path class="g-tetra-in" d="M56.17 95.83L56.17 105.83 M47.37 110.23L56.17 105.83 M64.97 110.23L56.17 105.83"/><g class="g-pulse later"><circle class="g-halo" cx="56.17" cy="105.83" r="4.4"/><circle class="g-core-blue" cx="56.17" cy="105.83" r="2.2"/></g></g>
+              <g class="g-upright" style="transform-origin:21.89px 82px"><path class="g-tetra" d="M21.89 72L32.89 90L10.89 90Z"/><path class="g-tetra-in" d="M21.89 72L21.89 84.5 M10.89 90L21.89 84.5 M32.89 90L21.89 84.5"/><g class="g-pulse"><circle class="g-halo" cx="21.89" cy="84.5" r="5.5"/><circle class="g-core-violet" cx="21.89" cy="84.5" r="2.6"/></g></g>
+              <g class="g-upright" style="transform-origin:21.15px 39.34px"><path class="g-tetra" d="M21.15 32.34L28.85 44.94L13.45 44.94Z"/><path class="g-tetra-in" d="M21.15 32.34L21.15 41.09 M13.45 44.94L21.15 41.09 M28.85 44.94L21.15 41.09"/><g class="g-pulse latest"><circle class="g-halo" cx="21.15" cy="41.09" r="3.85"/><circle class="g-core-mint" cx="21.15" cy="41.09" r="2.2"/></g></g>
+              <g class="g-upright" style="transform-origin:103.83px 63.83px"><g class="g-join" style="--jx:12.95px;--jy:1.13px"><path class="g-tetra" d="M103.83 57.33L110.98 69.03L96.68 69.03Z"/><path class="g-tetra-in" d="M103.83 57.33L103.83 65.46 M96.68 69.03L103.83 65.46 M110.98 69.03L103.83 65.46"/><g class="g-pulse"><circle class="g-halo" cx="103.83" cy="65.46" r="3.58"/><circle class="g-core-blue" cx="103.83" cy="65.46" r="2.2"/></g></g></g>
+            </g>
           </svg>
           <h3>P-FIELD<span class="dot" aria-hidden="true">·</span><span class="role">We</span></h3>
           <p>Agents work toward a shared goal under common rules. Each makes its own decisions.</p>
