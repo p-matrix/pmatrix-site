@@ -4,8 +4,23 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#090c12" />
-  <meta name="description" content="P-MATRIX — AI-native, cross-principal collaboration on the Agentic Web. Self · Other · We." />
-  <title>P-MATRIX</title>
+  <title>P-MATRIX — AI-native system for the Agentic Web</title>
+  <meta name="description" content="AI agents act on behalf of different people and organizations. They work together within the authority each is given." />
+  <link rel="canonical" href="https://p-matrix.io/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="P-MATRIX" />
+  <meta property="og:url" content="https://p-matrix.io/" />
+  <meta property="og:title" content="P-MATRIX — AI-native system for the Agentic Web" />
+  <meta property="og:description" content="AI agents act on behalf of different people and organizations. They work together within the authority each is given." />
+  <meta property="og:image" content="https://p-matrix.io/pmatrix-logo-square-transparent-512.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="512" />
+  <meta property="og:image:height" content="512" />
+  <meta property="og:image:alt" content="P-MATRIX logo" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="P-MATRIX — AI-native system for the Agentic Web" />
+  <meta name="twitter:description" content="AI agents act on behalf of different people and organizations. They work together within the authority each is given." />
+  <meta name="twitter:image" content="https://p-matrix.io/pmatrix-logo-square-transparent-512.png" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <style>
     :root {
@@ -139,38 +154,12 @@
       font-weight: 370;
       line-height: 1.65;
       letter-spacing: -.025em;
-      color: #d4dbe7;
+      color: #e3e9f2;
       margin: 0;
       text-wrap: balance;
       max-width: 850px;
       animation: rise .9s .35s both cubic-bezier(.2,.8,.25,1);
     }
-    .tagline strong { font-weight: 500; color: #fff; }
-    .philosophy {
-      margin-top: clamp(64px, 11vh, 122px);
-      animation: rise .9s .6s both cubic-bezier(.2,.8,.25,1);
-      display: grid; gap: 17px; justify-items: center;
-    }
-    .values {
-      margin: 0;
-      font-size: clamp(.8rem, 1vw, .93rem);
-      font-weight: 380;
-      letter-spacing: -.045em;
-      line-height: 1.15;
-      color: #929baa;
-      white-space: nowrap;
-    }
-    .values .dot { color: var(--blue); font-size: .8em; font-weight: 300; margin: 0 .38em; }
-    .system {
-      margin: 0;
-      color: #f3f6fb;
-      font-size: clamp(.98rem, 1.4vw, 1.22rem);
-      letter-spacing: .06em;
-      font-weight: 550;
-      line-height: 1.5;
-      white-space: nowrap;
-    }
-    .system .dot { color: #667b94; margin: 0 .62em; }
     .corner {
       position: absolute; width: 27px; height: 27px; opacity: .38; pointer-events: none;
     }
@@ -178,6 +167,162 @@
     .corner.tr { top: clamp(23px, 3.3vw, 44px); right: clamp(23px, 3.3vw, 44px); border-right: 1px solid #7c96b1; border-top: 1px solid #7c96b1; }
     .corner.bl { bottom: clamp(23px, 3.3vw, 44px); left: clamp(23px, 3.3vw, 44px); border-left: 1px solid #7c96b1; border-bottom: 1px solid #7c96b1; }
     .corner.br { bottom: clamp(23px, 3.3vw, 44px); right: clamp(23px, 3.3vw, 44px); border-right: 1px solid #7c96b1; border-bottom: 1px solid #7c96b1; }
+    /* Identity line above the wordmark. */
+    .eyebrow {
+      margin: 0 0 clamp(16px, 2.4vh, 24px);
+      font-size: clamp(.78rem, .95vw, .9rem);
+      font-weight: 450;
+      letter-spacing: .08em;
+      color: #929baa;
+      animation: rise .9s .08s both cubic-bezier(.2,.8,.25,1);
+    }
+    /* Each core sentence keeps its own line so it reads whole at any width. */
+    .tagline .line { display: block; }
+    .sub {
+      margin: clamp(16px, 2.4vh, 22px) 0 0;
+      font-size: clamp(.92rem, 1.15vw, 1.04rem);
+      font-weight: 380;
+      line-height: 1.6;
+      letter-spacing: -.01em;
+      color: #9aa4b4;
+      max-width: 640px;
+      text-wrap: balance;
+      animation: rise .9s .45s both cubic-bezier(.2,.8,.25,1);
+    }
+    .sub .line { display: block; }
+    .jump {
+      margin-top: clamp(56px, 9vh, 104px);
+      animation: rise .9s .6s both cubic-bezier(.2,.8,.25,1);
+    }
+    .jump a {
+      color: #d6e0ee;
+      text-decoration: none;
+      font-size: clamp(.9rem, 1.1vw, 1rem);
+      font-weight: 500;
+      letter-spacing: .05em;
+      padding: 6px 2px 5px;
+      border-bottom: 1px solid rgba(136, 198, 250, .35);
+      transition: color .2s, border-color .2s;
+    }
+    .jump a:hover { color: #fff; border-color: rgba(136, 198, 250, .8); }
+    .jump .arrow { color: var(--blue); margin-left: .35em; }
+    a:focus-visible, .how h2:focus-visible {
+      outline: 2px solid var(--blue); outline-offset: 5px; border-radius: 4px;
+    }
+    .how h2:focus { outline: none; }
+    .how h2:focus-visible { outline: 2px solid var(--blue); }
+
+    /* Second section: how P-MATRIX works. */
+    .how {
+      position: relative;
+      padding: clamp(72px, 12vh, 128px) 24px clamp(64px, 10vh, 104px);
+      border-top: 1px solid var(--line);
+      background:
+        radial-gradient(ellipse 60% 40% at 50% 0%, rgba(39, 68, 107, .12), transparent 70%),
+        #080b10;
+    }
+    /* The same faint grid as the first screen, fading out from the top. */
+    .how::before {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(to right, rgba(151, 171, 199, .045) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(151, 171, 199, .045) 1px, transparent 1px);
+      background-size: 80px 80px;
+      mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, rgba(0,0,0,.7), transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, rgba(0,0,0,.7), transparent 75%);
+    }
+    .how-inner { position: relative; z-index: 1; width: min(100%, 1080px); margin: 0 auto; }
+    .how h2 {
+      margin: 0 0 clamp(36px, 6vh, 56px);
+      scroll-margin-top: 32px;
+      text-align: center;
+      font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+      font-weight: 500;
+      letter-spacing: -.02em;
+      color: #f3f6fb;
+    }
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      column-gap: clamp(28px, 4vw, 56px);
+      row-gap: 0;
+    }
+    /* Each part is drawn with the logo's own geometry instead of a box. */
+    .part { margin: 0; text-align: center; }
+    .part h3 {
+      margin: 18px 0 10px;
+      font-size: .98rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      color: #f3f6fb;
+    }
+    .part h3 .dot { color: #667b94; margin: 0 .5em; font-weight: 400; }
+    .part h3 .role { font-weight: 500; letter-spacing: .05em; }
+    .part p {
+      margin: 0 auto;
+      max-width: 320px;
+      color: #c3cbd8;
+      font-size: clamp(.96rem, 1.1vw, 1.04rem);
+      font-weight: 380;
+      line-height: 1.65;
+    }
+    .engine-mark { grid-column: 1; grid-row: 1; justify-self: center; align-self: center; }
+    .engine-text { grid-column: 2 / 4; grid-row: 1; align-self: center; text-align: left; }
+    .engine-text h3 { margin-top: 0; }
+    .engine-text p { margin: 0; max-width: 560px; }
+    .part.node { grid-column: 1; grid-row: 3; }
+    .part.link { grid-column: 2; grid-row: 3; }
+    .part.field { grid-column: 3; grid-row: 3; }
+    .engine-text .role { color: #c4eaff; }
+    .part.node .role { color: var(--blue); }
+    .part.link .role { color: var(--violet); }
+    .part.field .role { color: var(--mint); }
+    /* The engine's judgment reaches P-NODE directly below it. */
+    .stem {
+      grid-column: 1; grid-row: 2; justify-self: center;
+      width: 1px; height: clamp(30px, 4.5vh, 44px); margin: 14px 0 6px;
+      background: linear-gradient(180deg, rgba(196, 234, 255, .7), rgba(136, 198, 250, .2));
+    }
+    .glyph { display: block; margin: 0 auto; overflow: visible; }
+    .glyph-engine { width: clamp(84px, 8vw, 104px); height: auto; }
+    .glyph-part { width: clamp(116px, 11vw, 140px); height: auto; }
+    .g-shared { fill: none; stroke: rgba(167, 226, 219, .34); stroke-width: 1.1; }
+    .g-arc { fill: none; stroke-width: 1.25; stroke-linecap: round; opacity: .8; }
+    .g-halo { fill: rgba(129, 200, 245, .08); }
+    .g-core-blue { fill: #c4eaff; filter: drop-shadow(0 0 7px rgba(115, 194, 253, .75)); }
+    .g-core-violet { fill: #bfd5ff; filter: drop-shadow(0 0 7px rgba(130, 144, 254, .7)); }
+    .g-core-mint { fill: #afe5dc; filter: drop-shadow(0 0 7px rgba(130, 235, 199, .7)); }
+    .g-pulse { animation: pulse 4.5s ease-in-out infinite; }
+    .g-tetra { fill: none; stroke: #A9BDD8; stroke-width: 1; stroke-linejoin: round; opacity: .82; }
+    .g-tetra-in { fill: none; stroke: #8DA6C8; stroke-width: .6; opacity: .45; }
+    /* P-ENGINE alone: the judgment point, inside a faint outline of the P-NODE it belongs to. */
+    .g-ghost { fill: none; stroke: rgba(169, 189, 216, .26); stroke-width: .8; stroke-dasharray: 2 2.6; stroke-linejoin: round; }
+    .g-halo-strong { fill: rgba(129, 200, 245, .12); animation: pulse 4.5s ease-in-out infinite; }
+    .g-pulse.later { animation-delay: -1.6s; }
+    .g-pulse.latest { animation-delay: -3.2s; }
+    .nw { white-space: nowrap; }
+    .closing {
+      margin: clamp(36px, 6vh, 56px) auto 0;
+      max-width: 720px;
+      text-align: center;
+      color: #9aa4b4;
+      font-size: clamp(.95rem, 1.1vw, 1.04rem);
+      font-weight: 380;
+      line-height: 1.65;
+      text-wrap: balance;
+    }
+    .site-footer {
+      padding: 28px 24px 36px;
+      text-align: center;
+      color: #6f7a8a;
+      font-size: .82rem;
+      letter-spacing: .04em;
+      border-top: 1px solid rgba(181, 203, 231, .08);
+      background: #080b10;
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      html { scroll-behavior: smooth; }
+    }
     @keyframes rise { from { opacity: 0; transform: translateY(21px); filter: blur(6px); } to { opacity: 1; transform: translateY(0); filter: blur(0); } }
     @keyframes appear { from {opacity:0;} to {opacity:1;} }
     @keyframes gentle-turn { from {transform:rotate(0)} to {transform:rotate(360deg)} }
@@ -190,24 +335,27 @@
       .brand { font-size: clamp(1.5rem, 6.9vw, 2.3rem); letter-spacing: -.045em; }
       .rule { margin-top: 40px; margin-bottom: 28px; }
       .tagline { font-size: clamp(1.06rem, 4.15vw, 1.23rem); line-height: 1.65; max-width: 340px; }
-      .philosophy { margin-top: clamp(75px, 12vh, 100px); gap: 14px; }
-      .values { font-size: .8rem; }
-      .system { font-size: .95rem; letter-spacing: .07em; }
       .corner { width: 17px; height: 17px; opacity: .28; }
+      .eyebrow { font-size: .78rem; letter-spacing: .06em; }
+      .sub { font-size: .95rem; max-width: 340px; }
+      .jump { margin-top: clamp(56px, 9vh, 80px); }
+      .how { padding: 64px 18px 56px; }
+      .flow { grid-template-columns: minmax(0, 1fr); }
+      .engine-mark, .engine-text, .stem, .part.node, .part.link, .part.field { grid-column: 1; grid-row: auto; }
+      .engine-text { text-align: center; margin-top: 16px; }
+      .engine-text p { margin: 0 auto; max-width: 340px; }
+      .part.link, .part.field { margin-top: 44px; }
     }
     @media (max-width: 370px) {
       .brand { font-size: 1.5rem; }
-      .values { font-size: .78rem; }
-      .values .dot { margin: 0 .24em; }
-      .system { font-size: .9rem; }
-      .system .dot { margin: 0 .37em; }
+      .tagline, .sub { max-width: 300px; }
     }
     @media (max-height: 650px) and (min-width: 681px) {
       .landing { padding-top: 36px; padding-bottom: 36px; }
       .symbol { margin-bottom: 18px; width: 78px; height: 78px; }
       .brand { font-size: clamp(2rem, 5vh, 3.4rem); }
       .rule { margin: 25px 0 18px; }
-      .philosophy { margin-top: 40px; }
+      .jump { margin-top: 36px; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; transition: none !important; }
@@ -238,7 +386,7 @@
     </svg>
     <div class="content">
       <!-- The original CI Book v2.0 geometry, enlarged for legibility. -->
-      <svg class="symbol" viewBox="0 0 80 80" aria-label="P-MATRIX 정사면체 로고: 내부에서 움직이는 균형점" role="img">
+      <svg class="symbol" viewBox="0 0 80 80" aria-label="P-MATRIX logo: a tetrahedron with a moving point of balance inside" role="img">
         <path class="tetra-frame" d="M40 8L72 60L8 60Z" fill="none" stroke-linejoin="round"/>
         <path class="tetra-inner" d="M40 8L40 43 M8 60L40 43 M72 60L40 43" fill="none"/>
         <g class="tetra-dot">
@@ -246,14 +394,88 @@
           <circle class="tetra-core" cx="40" cy="43" r="2.9" />
         </g>
       </svg>
+      <p class="eyebrow">AI-native system for the Agentic Web</p>
       <h1 class="brand">P-MATRIX</h1>
       <div class="rule" aria-hidden="true"></div>
-      <p class="tagline">AI-native, cross-principal collaboration on the Agentic Web.</p>
-      <div class="philosophy">
-        <p class="system">P-NODE<span class="dot">·</span>P-LINK<span class="dot">·</span>P-FIELD</p>
-        <p class="values">Self<span class="dot">·</span>Other<span class="dot">·</span>We</p>
-      </div>
+      <p class="tagline"><span class="line">AI agents act on behalf of different people and organizations.</span> <span class="line">They work together within the authority each is given.</span></p>
+      <p class="sub"><span class="line">You decide what your agent can do.</span> <span class="line">You can change or withdraw that authority.</span></p>
+      <p class="jump"><a href="#how" id="jump-how">How P-MATRIX works<span class="arrow" aria-hidden="true">↓</span></a></p>
     </div>
   </main>
+
+  <section class="how" aria-labelledby="how">
+    <div class="how-inner">
+      <h2 id="how" tabindex="-1">How P-MATRIX works</h2>
+      <div class="flow">
+        <div class="engine-mark" aria-hidden="true">
+          <svg class="glyph glyph-engine" viewBox="0 0 80 80">
+            <path class="g-ghost" d="M40 8L72 60L8 60Z M40 8L40 43 M8 60L40 43 M72 60L40 43"/>
+            <g class="tetra-dot">
+              <circle class="g-halo-strong" cx="40" cy="43" r="11" />
+              <circle class="tetra-core" cx="40" cy="43" r="3.6" />
+            </g>
+          </svg>
+        </div>
+        <article class="part engine-text">
+          <h3>P-ENGINE<span class="dot" aria-hidden="true">·</span><span class="role">Judgment</span></h3>
+          <p><span class="nw">P-ENGINE</span> uses the goals and rules you set, along with the results of earlier actions, to decide whether an approach should stay the same or change.</p>
+        </article>
+        <div class="stem" aria-hidden="true"></div>
+        <article class="part node">
+          <svg class="glyph glyph-part" viewBox="0 0 80 80" aria-hidden="true">
+            <path class="tetra-frame" d="M40 8L72 60L8 60Z" fill="none" stroke-linejoin="round"/>
+            <path class="tetra-inner" d="M40 8L40 43 M8 60L40 43 M72 60L40 43" fill="none"/>
+            <g class="tetra-dot">
+              <circle class="tetra-halo" cx="40" cy="43" r="7.4" />
+              <circle class="tetra-core" cx="40" cy="43" r="2.9" />
+            </g>
+          </svg>
+          <h3>P-NODE<span class="dot" aria-hidden="true">·</span><span class="role">Self</span></h3>
+          <p>Through <span class="nw">P-NODE</span>, your agent puts that judgment into practice, taking your preferences into account and acting within the authority you give it.</p>
+        </article>
+        <article class="part link">
+          <svg class="glyph glyph-part" viewBox="0 0 120 120" aria-hidden="true">
+            <defs>
+              <linearGradient id="g-link-arc" x1="30" y1="0" x2="90" y2="0" gradientUnits="userSpaceOnUse"><stop stop-color="#88c6fa"/><stop offset="1" stop-color="#b8b5ef"/></linearGradient>
+            </defs>
+            <path class="g-arc" d="M30 46 Q60 12 90 46" stroke="url(#g-link-arc)" />
+            <path class="g-tetra" d="M30 46L52 82L8 82Z"/><path class="g-tetra-in" d="M30 46L30 71 M8 82L30 71 M52 82L30 71"/><g class="g-pulse"><circle class="g-halo" cx="30" cy="71" r="11"/><circle class="g-core-blue" cx="30" cy="71" r="3.2"/></g>
+            <path class="g-tetra" d="M90 46L112 82L68 82Z"/><path class="g-tetra-in" d="M90 46L90 71 M68 82L90 71 M112 82L90 71"/><g class="g-pulse later"><circle class="g-halo" cx="90" cy="71" r="11"/><circle class="g-core-violet" cx="90" cy="71" r="3.2"/></g>
+          </svg>
+          <h3>P-LINK<span class="dot" aria-hidden="true">·</span><span class="role">Other</span></h3>
+          <p>Agents representing different people or organizations exchange messages and proposals. Each can accept, decline, or suggest another approach.</p>
+        </article>
+        <article class="part field">
+          <svg class="glyph glyph-part" viewBox="0 0 120 120" aria-hidden="true">
+            <circle class="g-shared" cx="60" cy="60" r="44" />
+            <path class="g-tetra" d="M60 6L71 24L49 24Z"/><path class="g-tetra-in" d="M60 6L60 18.5 M49 24L60 18.5 M71 24L60 18.5"/><g class="g-pulse"><circle class="g-halo" cx="60" cy="18.5" r="5.5"/><circle class="g-core-blue" cx="60" cy="18.5" r="2.6"/></g>
+            <path class="g-tetra" d="M98.1 72L109.1 90L87.1 90Z"/><path class="g-tetra-in" d="M98.1 72L98.1 84.5 M87.1 90L98.1 84.5 M109.1 90L98.1 84.5"/><g class="g-pulse later"><circle class="g-halo" cx="98.1" cy="84.5" r="5.5"/><circle class="g-core-violet" cx="98.1" cy="84.5" r="2.6"/></g>
+            <path class="g-tetra" d="M21.9 72L32.9 90L10.9 90Z"/><path class="g-tetra-in" d="M21.9 72L21.9 84.5 M10.9 90L21.9 84.5 M32.9 90L21.9 84.5"/><g class="g-pulse latest"><circle class="g-halo" cx="21.9" cy="84.5" r="5.5"/><circle class="g-core-mint" cx="21.9" cy="84.5" r="2.6"/></g>
+          </svg>
+          <h3>P-FIELD<span class="dot" aria-hidden="true">·</span><span class="role">We</span></h3>
+          <p>Agents work together toward a shared goal under common rules. Each continues to make decisions on behalf of the person or organization it represents.</p>
+        </article>
+      </div>
+      <p class="closing">Agents can work together directly through <span class="nw">P-LINK</span>. When they need a shared space with common rules, they can work together in <span class="nw">P-FIELD</span>.</p>
+    </div>
+  </section>
+
+  <footer class="site-footer">© P-MATRIX</footer>
+
+  <script>
+    // Move keyboard focus with the in-page link so the next Tab continues inside the section.
+    (function () {
+      var link = document.getElementById('jump-how');
+      var target = document.getElementById('how');
+      if (!link || !target) return;
+      link.addEventListener('click', function (event) {
+        event.preventDefault();
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+        target.focus({ preventScroll: true });
+        if (history.pushState) history.pushState(null, '', '#how');
+      });
+    })();
+  </script>
 </body>
 </html>
